@@ -1,3 +1,4 @@
+<pre>
 <?php
 
 
@@ -7,5 +8,6 @@ if ($_GET) {
   $audio = "./audio/evil_laughs/wickedwitchlaugh.mp3";
 }
 
-system("/usr/bin/mplayer $audio");
+//system("/usr/bin/mplayer $audio > lastrun.log");
+system("/usr/bin/mplayer -ao pulse $audio 2> lastrun.err");
 ?>

@@ -29,20 +29,18 @@ $if_i_dont_assign_it_spews_before_content = new Redbox(array(
 foreach (SRC_DIRS as $src_dir) {
     // $dir_fh = opendir($src_dir);
     echo "<h1>", preg_replace("/_/", " ", $src_dir), "</h1>";
-    echo "<div class='d-flex flex-row actions'>";
+    echo "<div class='d-flex align-content-center flex-wrap actions'>";
     foreach (preg_grep('/\.(mp3|wav)$/', scandir("./audio/" . $src_dir)) as $file) {
 
         $path = "$src_dir/$file";
-        //print("$path<br/>");
         $icon_file = "avatars/$src_dir-" . preg_replace('/\..+?$/', '', $file) . ".png";
-        //print("&nbsp;" . $icon_file . "<br/>\n");
         if (! file_exists($icon_file))
         {
             $url = "https://api.adorable.io/avatars/80/$src_dir-$file.png";
             //print ("<p>Getting $icon_file from $url</p>\n");
             file_put_contents($icon_file, fopen($url, 'r'));
         }
-        echo "<a href='#' data-src='$path'><img src='$icon_file'/></a><br/>\n";
+        echo "<div class='p-0 mr-auto'><a href='#' data-src='$path'><img src='$icon_file'/></a></div>\n";
 
     }
     echo "</div>";
