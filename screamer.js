@@ -27,7 +27,7 @@ $("document").ready(function() {
 			$.get("play.php?audio=" + $clickyThing.data('src'),
 				  function() {
 					 // Done playing.thanks
-					 decClass($("a[data-trigger='" + $(this).id), "server")
+					 decClass($clickyThing, "server")
 					 console.log("Server side - done.");
 	  			  });
 		} 
@@ -39,7 +39,6 @@ $("document").ready(function() {
 			$(audio).on('ended', function() {
 				decClass($("a[data-trigger='" + this.id), "client")
 				console.log("Client side - done playing " + this.id);
-			
 			});
 			console.log("Client side - playing " + $clickyThing.data('trigger'));
 			incClass($clickyThing, "client");

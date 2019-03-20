@@ -126,11 +126,11 @@ foreach (SRC_DIRS as $src_dir) {
         $infill = 4 - $gridno;
         if ($infill) {
             $grid_size = $infill * 3; // 8/2 = 4 cells of 3 units in the subgrids
-            echo "\t\t\t<div class='col-$grid_size'>&nbsp;</div>\n";
+            echo "<div class='col-$grid_size'>&nbsp;</div>\n";
         }
     }
     
-    echo "\t\t</div>\n\t</div>\n</div>";
+    echo "</div></div></div>";
 }
 
 // -------------------------------------------------------------------------------------------?>
