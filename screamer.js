@@ -1,4 +1,19 @@
-// SCREAMER
+/*
+ 
+  ██████  ▄████▄   ██▀███  ▓█████ ▄▄▄       ███▄ ▄███▓▓█████  ██▀███  
+▒██    ▒ ▒██▀ ▀█  ▓██ ▒ ██▒▓█   ▀▒████▄    ▓██▒▀█▀ ██▒▓█   ▀ ▓██ ▒ ██▒
+░ ▓██▄   ▒▓█    ▄ ▓██ ░▄█ ▒▒███  ▒██  ▀█▄  ▓██    ▓██░▒███   ▓██ ░▄█ ▒
+  ▒   ██▒▒▓▓▄ ▄██▒▒██▀▀█▄  ▒▓█  ▄░██▄▄▄▄██ ▒██    ▒██ ▒▓█  ▄ ▒██▀▀█▄  
+▒██████▒▒▒ ▓███▀ ░░██▓ ▒██▒░▒████▒▓█   ▓██▒▒██▒   ░██▒░▒████▒░██▓ ▒██▒
+▒ ▒▓▒ ▒ ░░ ░▒ ▒  ░░ ▒▓ ░▒▓░░░ ▒░ ░▒▒   ▓▒█░░ ▒░   ░  ░░░ ▒░ ░░ ▒▓ ░▒▓░
+░ ░▒  ░ ░  ░  ▒     ░▒ ░ ▒░ ░ ░  ░ ▒   ▒▒ ░░  ░      ░ ░ ░  ░  ░▒ ░ ▒░
+░  ░  ░  ░          ░░   ░    ░    ░   ▒   ░      ░      ░     ░░   ░ 
+      ░  ░ ░         ░        ░  ░     ░  ░       ░      ░  ░   ░     
+         ░
+         
+Wm. Pollock 2018-2019
+
+*/
 $("document").ready(function() {
     $(".actions a").click(function(e) {
     	var $clickyThing = $(this);
@@ -8,30 +23,29 @@ $("document").ready(function() {
 		// Server audio (== PI)
 		if ($('#audio-out-server').is(":checked")) {
 			console.log("Server side - playing " + $clickyThing.data('src'));
-			incClass($clickThing, "server");
+			incClass($clickyThing, "server");
 			$.get("play.php?audio=" + $clickyThing.data('src'),
 				  function() {
 					 // Done playing.thanks
 					 decClass($("a[data-trigger='" + $(this).id), "server")
 					 console.log("Server side - done.");
 	  			  });
-		}
+		} 
 
 		// Client-side (browser) audio 
 		if ($('#audio-out-client').is(":checked")) {
-			var $audio = $("#" + $clickyThing.data('trigger'))[0];
+			var audiosrc = $("#" + $clickyThing.data('trigger'))[0];
+			var audio = $(audiosrc).clone()[0];
+			$(audio).on('ended', function() {
+				decClass($("a[data-trigger='" + this.id), "client")
+				console.log("Client side - done playing " + this.id);
+			
+			});
 			console.log("Client side - playing " + $clickyThing.data('trigger'));
 			incClass($clickyThing, "client");
-			$audio.play();
+			audio.play();
 		}
     });
-    
-	$("audio").on('ended', function() {
-		decClass($("a[data-trigger='" + this.id), "client")
-		console.log("Client side - done playing " + this.id);
-	
-	});
-   
 });
 
 function incClass($clickyThing, className) {
