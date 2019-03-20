@@ -1,24 +1,60 @@
 // SCREAMER
-
 $("document").ready(function() {
     $(".actions a").click(function(e) {
     	var $clickyThing = $(this);
     	
-	e.preventDefault();
-	
-	$.get("play.php?audio=" + $clickyThing.data('src'),
-		  function() {
-		// Done playing.thanks
-		if ($clickyThing.data('instances') == 1) {
-			$clickyThing.removeClass('playing');
+		e.preventDefault();
+
+		// Server audio (== PI)
+		if ($('#audio-out-server').is(":checked")) {
+			console.log("Server side - playing " + $clickyThing.data('src'));
+			incClass($clickThing, "server");
+			$.get("play.php?audio=" + $clickyThing.data('src'),
+				  function() {
+					 // Done playing.thanks
+					 decClass($("a[data-trigger='" + $(this).id), "server")
+					 console.log("Server side - done.");
+	  			  });
 		}
-		$clickyThing.data('instances', $clickyThing.data('instances') - 1);
-	});
-	// Tag this file as playing and count how many instances we've got.
-	// I mean, sure, we should allow + 1 buttonpresses, yes?  YESSS.
-	if (!$clickyThing.data('instances')) {
-		$clickyThing.data('instances', 0);
-	}
-	$clickyThing.addClass('playing').data('instances', $(this).data('instances') + 1);
+
+		// Client-side (browser) audio 
+		if ($('#audio-out-client').is(":checked")) {
+			var $audio = $("#" + $clickyThing.data('trigger'))[0];
+			console.log("Client side - playing " + $clickyThing.data('trigger'));
+			incClass($clickyThing, "client");
+			$audio.play();
+		}
     });
+    
+	$("audio").on('ended', function() {
+		decClass($("a[data-trigger='" + this.id), "client")
+		console.log("Client side - done playing " + this.id);
+	
+	});
+   
 });
+
+function incClass($clickyThing, className) {
+	var iName = "instances-" + className;
+	
+	if (!$clickyThing.data(iName)) {
+		$clickyThing.data(iName, 0);
+	}
+
+	$clickyThing.addClass('playing-' + className).data(iName, $clickyThing.data(iName) + 1);
+}
+
+function decClass($clickyThing, className) {
+	// Tag this file as playing and count how many instances we've got.
+	// I mean, sure, we should allow + 1 buttonpresses, yes?  YESSS (at least server side...)
+	// Establish instance data 
+
+	var iName = "instances-" + className;
+	 console.log("There are " + $clickyThing.data(iName) + " " + className + " instances running.");
+
+	 if ($clickyThing.data(iName) == 1) {
+	 		$clickyThing.removeClass('playing-' + className);
+	 }
+	 // Decrease instances.  
+	 $clickyThing.data(iName, $clickyThing.data(iName) - 1);
+}

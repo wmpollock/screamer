@@ -17,12 +17,21 @@
 	text-align: center;
 }
 
-.actions .playing img {
+.actions .playing-server img {
 	-webkit-box-shadow: 0px 0px 56px 2px rgba(255,255,0,1);
 	-moz-box-shadow: 0px 0px 56px 2px rgba(255,255,0,1);
 	box-shadow: 0px 0px 56px 2px rgba(255,255,0,1);
-	
 }
+
+.actions .playing-client img {
+    -webkit-box-shadow: 0px 0px 56px 2px #45ff22;
+    -moz-box-shadow: 0px 0px 56px 2px #45ff22;
+    box-shadow: 0px 0px 56px 2px #45ff22;
+}
+
+
+
+
 
 /* .row {
 	border: 1px solid black;
