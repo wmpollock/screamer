@@ -56,20 +56,26 @@ function safeId($string) {
     <h1>The Screamer</h1>
   </div>
   <form>
+  
+<?php 
+// -------------------------------------------------------------------------------------------
+if (file_exists("/usr/bin/mplayer")) {
+    echo '
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="audio-out-client" checked='checked'>
+      <input class="form-check-input" type="checkbox" value="" id="audio-out-client" checked="checked">
       <label class="form-check-label" for="audio-out-client">
           Audio to browser
       </label>
-    </div>
+    </div> 
     <div class="form-check">
       <input class="form-check-input" type="checkbox" value="" id="audio-out-server">
       <label class="form-check-label" for="audio-out-server">
           Audio to server
       </label>
-    </div>
-<?php
-// -------------------------------------------------------------------------------------------
+    </div>';
+}
+
+
 $start_outer_container = "<div class='row actions'>\n";
 $start_outer_grid = "\t<div class='col-md-6 col-12'>\n";
 $start_inner_grid = "\t\t<div class='row justify-content-between'>\n";
