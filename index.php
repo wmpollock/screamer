@@ -92,7 +92,7 @@ foreach (SRC_DIRS as $src_dir) {
     // it appears to blow up Android :/  I mean I was whatevs about losing IE but Android
     // hatefulness is another level.
     //foreach (preg_grep('/\.(mp3|wav)$/', scandir("./audio/" . $src_dir)) as $file) {
-    foreach (preg_grep('/\.(mp3)$/', scandir("./audio/" . $src_dir)) as $file) {
+    foreach (preg_grep('/\.(mp3|ogg)$/', scandir("./audio/" . $src_dir)) as $file) {
         if ($counter && ($counter % 4 == 0 )) {
             echo "\t\t</div>\n\t</div>\n";
             if ($counter % 8 == 0 ) {
