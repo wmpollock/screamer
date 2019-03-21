@@ -88,7 +88,11 @@ foreach (SRC_DIRS as $src_dir) {
          $start_inner_grid;
          
     $counter = 0;
-    foreach (preg_grep('/\.(mp3|wav)$/', scandir("./audio/" . $src_dir)) as $file) {
+    // Being able to drop in .WAV files unconverted was cool and the gang but unfortunately
+    // it appears to blow up Android :/  I mean I was whatevs about losing IE but Android
+    // hatefulness is another level.
+    //foreach (preg_grep('/\.(mp3|wav)$/', scandir("./audio/" . $src_dir)) as $file) {
+    foreach (preg_grep('/\.(mp3)$/', scandir("./audio/" . $src_dir)) as $file) {
         if ($counter && ($counter % 4 == 0 )) {
             echo "\t\t</div>\n\t</div>\n";
             if ($counter % 8 == 0 ) {
@@ -119,8 +123,8 @@ foreach (SRC_DIRS as $src_dir) {
         }
         echo "<div class='col-3'>\n",
              "  <a href='#' data-src='$path' data-trigger='$audio_id'><img src='$icon_file' class='img-fluid'/></a>\n",
-            //" <audio src='audio/$path' id='$audio_id' type='$audio_type'></audio>\n",
-            "   <audio src='audio/$path' id='$audio_id' preload='auto'></audio>\n",
+            " <audio src='audio/$path' id='$audio_id' type='$audio_type' preload='auto'></audio>\n",
+            //"   <audio src='audio/$path' id='$audio_id' preload='auto'></audio>\n",
             "</div>\n";
 
     }

@@ -14,9 +14,6 @@
 Wm. Pollock 2018-2019
 
 }*/
-.actions img {
-    border-radius: 25px;
-}
 .row {
 	margin: 0px;
 }
@@ -24,32 +21,35 @@ Wm. Pollock 2018-2019
 	margin: 0px 0 25px 0px;
 }
 .row.actions div {
-	padding: 0;
+	padding: 0px;
 }
 .row .row div {
 	text-align: center;
+	padding: 5px;
 }
 
+.actions img {
+    border-radius: 25px;
+    box-shadow: 1px 1px #c0c0c0, 
+                2px 2px #b0b0b0, 
+                2px 3px #a0a0a0, 
+                4px 4px #909090, 5px 5px #808080;
+    }
 .actions .playing-server img {
 	-webkit-box-shadow: 0px 0px 56px 2px rgba(255,255,0,1);
 	-moz-box-shadow: 0px 0px 56px 2px rgba(255,255,0,1);
-	box-shadow: 0px 0px 56px 2px rgba(255,255,0,1);
+	box-shadow: 4px 4px 4px black, 0px 0px 56px 3px #AF2, 0px 0px 40px 12px #AF2, 0px 0px 20px 4px #AF2;
+	   
 }
-
 .actions .playing-client img {
     -webkit-box-shadow: 0px 0px 56px 2px #45ff22;
     -moz-box-shadow: 0px 0px 56px 2px #45ff22;
-    box-shadow: 0px 0px 56px 2px #45ff22;
+    box-shadow: 1px 1px #45ff22, 
+                2px 2px #45ff22, 
+                2px 3px #45ff22, 
+                4px 4px #45ff22, 
+                5px 5px #45ff22,
+    5px 5px 5px 0px #45ff22, 
+                0px 0px 56px 3px #45ff22, 
+                0px 0px 40px 12px #45ff22, 0px 0px 20px 4px #45ff22;
 }
-
-
-
-
-
-/* .row {
-	border: 1px solid black;
-}
-.row .row {
-	border: 1px solid yellow;
-} */
-

@@ -32,8 +32,9 @@ $("document").ready(function() {
 	  			  });
 		} 
 
-		// Client-side (browser) audio 
-		if ($('#audio-out-client').is(":checked")) {
+		// Client-side (browser) audio: the default if we don't have the control and otherwise
+		// if its enabled.
+		if ($('#audio-out-client').length ==0 || $('#audio-out-client').is(":checked")) {
 			var audiosrc = $("#" + $clickyThing.data('trigger'))[0];
 			var audio = $(audiosrc).clone()[0];
 			$(audio).on('ended', function() {
