@@ -1,6 +1,6 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "Bill Pollock's Screamer",
+    "short_name": "The Screamer",
     "icons": [
         {
             "src": "/screamer/favicon/android-chrome-192x192.png",
@@ -15,5 +15,8 @@
     ],
     "theme_color": "#ffffff",
     "background_color": "#ffffff",
-    "display": "standalone"
+    "display": "standalone",
+
+    "start_url": "/screamer"
+
 }
