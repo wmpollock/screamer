@@ -15,7 +15,16 @@ Wm. Pollock 2018-2019
 
 */
 $("document").ready(function() {
-    $(".actions a").click(function(e) {
+    $(".actions a img").mousedown(function(e) {
+		$(this).addClass("down");
+		console.log("DOWN")
+	});
+	$(".actions a img").mouseup(function(e) {
+		$(this).removeClass("down");
+		console.log("DOWN")
+	});
+
+	$(".actions a").click(function(e) {
     	var $clickyThing = $(this);
     	
 		e.preventDefault();
